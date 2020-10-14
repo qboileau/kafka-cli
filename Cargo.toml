@@ -1,0 +1,14 @@
+[package]
+name = "kafka-shell"
+version = "0.1.0"
+authors = ["qboileau <quentin.boileau@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+structopt = "0.3.20"
+clap = "2.33.3"
+#kafka = "0.8.0"
+rdkafka = "0.24.0"
+dialoguer = "0.6.2"
