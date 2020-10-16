@@ -12,3 +12,4 @@ clap = "2.33.3"
 #kafka = "0.8.0"
 rdkafka = "0.24.0"
 dialoguer = "0.6.2"
+tokio = { version = "0.3.0" , features = ["full"] }
