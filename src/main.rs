@@ -35,9 +35,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Opt {:?}", opt.brokers);
 
     let theme = ColorfulTheme::default();
-    //
-    // let base_consumer = create_consumer_client(&opt);
-    // let metadata = get_metadata(&base_consumer);
 
     loop {
         let cmd: String = Input::with_theme(&theme)
@@ -58,31 +55,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     Ok(())
-
-    // let client = create_admin_client(&opt);
-    // task::block_on(create_topic("bite", 1,1, &client));
-
-
-    // admin.create_topics(vec!(&NewTopic::new("test", 2, TopicReplication::Fixed(2))), &AdminOptions::new());
-    //
-    // let consumer: BaseConsumer = ClientConfig::new()
-    //     .set("bootstrap.servers", "192.168.96.3:9092")
-    //     .create()
-    //     .expect("Consumer creation failed");
-    //
-    // let metadata = consumer
-    //     .fetch_metadata(Some("test"), Duration::from_secs(30))
-    //     .expect("Failed to fetch metadata");
-    //
-    // println!("Brokers:");
-    // for broker in metadata.brokers() {
-    //     println!(
-    //         "  Id: {}  Host: {}:{}  ",
-    //         broker.id(),
-    //         broker.host(),
-    //         broker.port()
-    //     );
-    // }
 }
 
 fn print_help() {
@@ -123,9 +95,9 @@ fn list_topics(options: &Opt) -> () {
 }
 
 fn client_config(options: &Opt) -> ClientConfig {
-    let mut connard = ClientConfig::new();
-    connard.set("bootstrap.servers", options.brokers.first().unwrap().as_str());
-    connard
+    let mut conf = ClientConfig::new();
+    conf.set("bootstrap.servers", options.brokers.first().unwrap().as_str());
+    conf
 }
 
 fn create_admin_client(options: &Opt) -> AdminClient<DefaultClientContext> {
